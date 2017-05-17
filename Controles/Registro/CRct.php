@@ -148,7 +148,7 @@ if (isset($_POST['hidden_rct'])) {
         $ob_req->buscarPorId($ob_req);
         $_SESSION['accion_rct']='editar';
         unset($_SESSION['arreglo_buscado_rct']);
-        header("location: ../../Vistas/GuardarRct.php");
+        header("location: ../../Vistas/GuardarRCT.php");
      }
 
      

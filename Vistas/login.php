@@ -14,7 +14,7 @@ if (empty($_SESSION)) {
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SISTEMA  RCT | Iniciar Sesión</title>
+    <title>SISTEMA  RCT | LOGIN</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -42,10 +42,10 @@ if (empty($_SESSION)) {
         <img class='img-responsive' src='dist/img/ibm_logo.gif' alt='Photo'>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Logueate para iniciar Sesión</p>
+        <p class="login-box-msg">LOGIN</p>
         <form action="../Controles/CLogin.php" method="post">
           <div class="form-group has-feedback">
-            <input type="text" name="usuario" class="form-control" placeholder="Usuario">
+            <input type="text" name="usuario" class="form-control" placeholder="User">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -56,7 +56,7 @@ if (empty($_SESSION)) {
             <div class="col-xs-8">
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox"> Recordarme
+                  <input type="checkbox"> Rebember me
                 </label>
               </div>
             </div><!-- /.col -->
@@ -77,7 +77,7 @@ if (empty($_SESSION)) {
                   <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <h4><i class="icon fa fa-warning"></i> Error...!</h4>
-                    Usuario y/o password incorrecto(s)!
+                    User and/or password incorrect(s)!
                   </div>                                           
  <?php
                                             $_SESSION['mensaje'] = "";
