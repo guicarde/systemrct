@@ -12,7 +12,7 @@ $str = "host=$host port=$port dbname=$db_name user=$user password=$pass";
 //exit();
 function Conectar()
 {
-    $con = pg_connect("host=localhost port=5432 dbname=rct user=postgres password=123456") or die("error");
+    $con = pg_connect("host=echo.db.elephantsql.com port=5432 dbname=xwcbwhgk user=xwcbwhgk password=0TbxfZr3exr4bzhlm15R8IKsOlZDFcQe") or die("error");
     return $con;
 }
 
