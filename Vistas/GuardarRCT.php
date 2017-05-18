@@ -281,7 +281,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                       
                       
                       <div class="form-group">
-                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Start Date</span></label>
+                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Start Date (YYYY-MM-DD)</span></label>
                                         <div class="col-sm-4">
                                             <div class="input-group">
                                                     <div class="input-group-addon">
@@ -289,8 +289,8 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                     </div>
                                                 <input type="date" name="t_fecha_in" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" value="<?php echo substr($fechain,0,10);?>" data-mask>
                                              </div>
-                                        </div>
-                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Start Time</span></label>
+                                        </div> 
+                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Start Time (HH:MM)</span></label>
                                         <div class="col-sm-4">
                                             <div class="input-group">
                                                     <div class="input-group-addon">
@@ -301,7 +301,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                         </div>
                       </div>
                       <div class="form-group">
-                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Finish Date</span></label>
+                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Finish Date(YYYY-MM-DD)</span></label>
                                         <div class="col-sm-4">
                                             <div class="input-group">
                                                     <div class="input-group-addon">
@@ -310,7 +310,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                 <input type="date" name="t_fecha_fin" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" value="<?php echo substr($fechafin,0,10);?>" data-mask>
                                              </div>
                                         </div>
-                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Finish Time</span></label>
+                          <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Finish Time (HH:MM)</span></label>
                                         <div class="col-sm-4">
                                             <div class="input-group">
                                                     <div class="input-group-addon">
