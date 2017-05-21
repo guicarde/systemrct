@@ -28,7 +28,7 @@
                     <img src="../Controles/Fotos/<?php echo $_SESSION['foto']?>" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $_SESSION['user_personal']?>
-                      <small>Miembro del TEAM UNIQUE Ene. 2016</small>
+                      <small>TEAM IBM SYS-OPS Member - <?php echo date("Y"); ?></small>
                     </p>
                   </li>
                   <!-- Menu Body -->

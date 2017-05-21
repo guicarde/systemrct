@@ -171,10 +171,10 @@ function setIdcliente($idcliente) {
             return $val;
         }
         }
-    function listar(){
+    function listar($idusu){
        
         $con = Conectar();
-        $sql = "SELECT * FROM rct_listar()";
+        $sql = "SELECT * FROM rct_listar($idusu)";
         $res = pg_query($con,$sql);
         $array=null;
         while($fila = pg_fetch_assoc($res))

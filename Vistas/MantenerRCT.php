@@ -25,10 +25,10 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
     if ($_SESSION['accion_rct'] == 'busqueda') {
         $rcts = $_SESSION['arreglo_buscado_rct'];
     } else {
-        $rcts = null;
+        $rcts = $rct->listar($_SESSION['id_username']);
     }
 } else {
-    $rcts = null;
+    $rcts = $rct->listar($_SESSION['id_username']);
 }
 ?>
 <!DOCTYPE html>
