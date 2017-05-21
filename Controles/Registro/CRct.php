@@ -164,6 +164,7 @@ if (isset($_POST['hidden_rct'])) {
         $ob_rct->setTipo($tipo);
         $ob_rct->setDetalle($detalle);
         $ob_rct->setEstado($estado);
+        $ob_rct->setIdusu($_SESSION['id_username']);
          
         $arreglo = $ob_rct->buscar($ob_rct);
         

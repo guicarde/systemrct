@@ -307,7 +307,7 @@ function setIdcliente($idcliente) {
                 function buscar(Rct $r)
     {
          $con = Conectar();
-         $sql = "SELECT * FROM rct_buscar('%$r->detalle%','$r->tipo',$r->idcliente,'$r->estado')";
+         $sql = "SELECT * FROM rct_buscar('%$r->detalle%','$r->tipo',$r->idcliente,'$r->estado',$$r->idusu)";
 //         var_dump($sql);
 //         exit();
          
