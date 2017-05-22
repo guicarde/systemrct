@@ -375,8 +375,8 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                                   if($r['rct_tiporegistro']=='7'){echo "DEACTIVATION";}
                                   if($r['rct_tiporegistro']=='8'){echo "VACATION";}?></td>
                         <td><?php echo $r['cliente_nombre']; ?></td>
-                        <td><?php echo $r['rct_fechain']; ?></td>
-                        <td><?php echo $r['rct_fechafin']; ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechafin'])); ?></td>
                         <td><?php echo $r['rct_asignado']; ?></td>
                         <td><?php echo $r['rct_ticket']; ?></td>
                         <td><?php echo $r['rct_servidor']; ?></td>

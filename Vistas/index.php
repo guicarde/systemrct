@@ -312,13 +312,13 @@ unset($_SESSION['accion_usuario']);
                      
                     <thead>
                       <tr style="font-size:8pt;font-weight: bold;color: black">
-                        <th> TICKET</th> 
-                        <th> CLIENT</th>
-                        <th> DETAIL</th>
-                        <th> START DATE</th>
-                        <th> FINISH DATE</th>  
-                        <th> SERVERS</th> 
-                        <th> OBSERVATION</th> 
+                        <th width="5%"> TICKET</th> 
+                        <th width="15"> CLIENT</th>
+                        <th width="30%"> DETAIL</th>
+                        <th width="10%"> START DATE</th>
+                        <th width="10%"> FINISH DATE</th>  
+                        <th width="20%"> SERVERS</th> 
+                        <th width="10%"> OBSERVATION</th> 
                          
                       </tr>
                     </thead>
@@ -326,14 +326,14 @@ unset($_SESSION['accion_usuario']);
    <?php    
     if($rojos!= null) { foreach ($rojos as $r) { 
         ?>
-                      <tr style="font-size:12pt;font-weight: bold; color:white
+                      <tr style="font-size:10pt;font-weight: bold; color:white
                           " class="parpadea" bgcolor="#FF5733">
                         
                         <td><?php echo $r['rct_ticket']; ?></td>
                         <td><?php echo $r['cliente_nombre']; ?></td>
                         <td><?php echo $r['rct_detalle']; ?></td>
-                        <td><?php echo $r['rct_fechain']; ?></td>
-                        <td><?php echo $r['rct_fechafin']; ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechafin'])); ?></td>
                         <td><?php echo $r['rct_servidor']; ?></td>                        
                         <td><?php echo $r['rct_observacion']; ?></td>
                                            
@@ -343,12 +343,12 @@ unset($_SESSION['accion_usuario']);
     $num = 1;
     if($amarillos!= null) { foreach ($amarillos as $a) {
         ?>
-                      <tr style="font-size:12pt;font-weight: bold;color:darkblue" bgcolor="#F4D03F">
+                      <tr style="font-size:10pt;font-weight: bold;color:darkblue" bgcolor="#F4D03F">
                         <td><?php echo $a['rct_ticket']; ?></td>
                         <td><?php echo $a['cliente_nombre']; ?></td>
                         <td><?php echo $a['rct_detalle']; ?></td>
-                        <td><?php echo $a['rct_fechain']; ?></td>
-                        <td><?php echo $a['rct_fechafin']; ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($a['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($a['rct_fechafin'])); ?></td>
                         <td><?php echo $a['rct_servidor']; ?></td>                        
                         <td><?php echo $a['rct_observacion']; ?></td>
                                                
@@ -358,13 +358,13 @@ unset($_SESSION['accion_usuario']);
     $num = 1;
     if($verdes!= null) { foreach ($verdes as $v) {
         ?>
-                      <tr style="font-size:12pt;font-weight: bold; color:#34495E" bgcolor="#58D68D">
+                      <tr style="font-size:10pt;font-weight: bold; color:#34495E" bgcolor="#58D68D">
                         
                         <td><?php echo $v['rct_ticket']; ?></td>
                         <td><?php echo $v['cliente_nombre']; ?></td>
                         <td><?php echo $v['rct_detalle']; ?></td>
-                        <td><?php echo $v['rct_fechain']; ?></td>
-                        <td><?php echo $v['rct_fechafin']; ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($v['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y h:m",strtotime($v['rct_fechafin'])); ?></td>
                         <td><?php echo $v['rct_servidor']; ?></td>                        
                         <td><?php echo $v['rct_observacion']; ?></td>                                               
                       </tr>
