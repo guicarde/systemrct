@@ -347,8 +347,8 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $a['rct_ticket']; ?></td>
                         <td><?php echo $a['cliente_nombre']; ?></td>
                         <td><?php echo $a['rct_detalle']; ?></td>
-                        <td><?php echo date("d-m-Y h:m",strtotime($a['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y h:m",strtotime($a['rct_fechafin'])); ?></td>
+                        <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechafin'])); ?></td>
                         <td><?php echo $a['rct_servidor']; ?></td>                        
                         <td><?php echo $a['rct_observacion']; ?></td>
                                                
