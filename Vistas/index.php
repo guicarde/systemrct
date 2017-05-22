@@ -305,7 +305,7 @@ unset($_SESSION['accion_usuario']);
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#58D68D;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;CHANGES IN PROGRESS</strong><br> 
                                     
                 </div>
-                <div class="box-body chat" id="chat-box">
+                <div class="box-body chat" >
                  <div class="table-responsive">
                   <table id="example1" class="table table-bordered">
  <?php if ($verdes != null or $amarillos!= null or $rojos!= null ) { ?>
