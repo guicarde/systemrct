@@ -363,8 +363,8 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $v['rct_ticket']; ?></td>
                         <td><?php echo $v['cliente_nombre']; ?></td>
                         <td><?php echo $v['rct_detalle']; ?></td>
-                        <td><?php echo date("d-m-Y h:m",strtotime($v['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y h:m",strtotime($v['rct_fechafin'])); ?></td>
+                        <td><?php echo date("d-m-Y h:i",strtotime($v['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y h:i",strtotime($v['rct_fechafin'])); ?></td>
                         <td><?php echo $v['rct_servidor']; ?></td>                        
                         <td><?php echo $v['rct_observacion']; ?></td>                                               
                       </tr>
