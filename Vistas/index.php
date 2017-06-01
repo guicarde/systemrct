@@ -312,12 +312,13 @@ unset($_SESSION['accion_usuario']);
                      
                     <thead>
                       <tr style="font-size:8pt;font-weight: bold;color: black">
-                        <th width="5%"> TICKET</th> 
-                        <th width="15"> CLIENT</th>
+                        <th width="5%"> TICKET</th>                         
+                        <th width="10%"> CLIENT</th>                        
                         <th width="30%"> DETAIL</th>
+                        <th width="15%"> SPECIALIST</th>
                         <th width="10%"> START DATE</th>
                         <th width="10%"> FINISH DATE</th>  
-                        <th width="20%"> SERVERS</th> 
+                        <th width="10%"> SERVERS</th> 
                         <th width="10%"> OBSERVATION</th> 
                          
                       </tr>
@@ -332,6 +333,7 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $r['rct_ticket']; ?></td>
                         <td><?php echo $r['cliente_nombre']; ?></td>
                         <td><?php echo $r['rct_detalle']; ?></td>
+                        <td><?php echo $r['rct_asignado']; ?></td>
                         <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechain'])); ?></td>
                         <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechafin'])); ?></td>
                         <td><?php echo $r['rct_servidor']; ?></td>                        
@@ -347,6 +349,7 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $a['rct_ticket']; ?></td>
                         <td><?php echo $a['cliente_nombre']; ?></td>
                         <td><?php echo $a['rct_detalle']; ?></td>
+                        <td><?php echo $a['rct_asignado']; ?></td>
                         <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechain'])); ?></td>
                         <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechafin'])); ?></td>
                         <td><?php echo $a['rct_servidor']; ?></td>                        
@@ -363,6 +366,7 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $v['rct_ticket']; ?></td>
                         <td><?php echo $v['cliente_nombre']; ?></td>
                         <td><?php echo $v['rct_detalle']; ?></td>
+                        <td><?php echo $v['rct_asignado']; ?></td>
                         <td><?php echo date("d-m-Y h:i",strtotime($v['rct_fechain'])); ?></td>
                         <td><?php echo date("d-m-Y h:i",strtotime($v['rct_fechafin'])); ?></td>
                         <td><?php echo $v['rct_servidor']; ?></td>                        
@@ -376,6 +380,7 @@ unset($_SESSION['accion_usuario']);
                         <th> TICKET</th> 
                         <th> CLIENT</th>
                         <th> DETAIL</th>
+                        <th> SPECIALIST</th>
                         <th> START DATE</th>
                         <th> FINISH DATE</th>  
                         <th> SERVERS</th> 

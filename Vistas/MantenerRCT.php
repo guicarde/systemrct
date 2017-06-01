@@ -346,6 +346,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                       <tr style="font-size:8pt;font-weight: bold;color: white" bgcolor="424F7F">
                         <th> N</th>
                         <th> REGISTER</th> 
+                        <th> BY</th>
                         <th> CLIENT</th>
                         <th> START DATE</th>
                         <th> FINISH DATE</th> 
@@ -374,6 +375,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                                   if($r['rct_tiporegistro']=='6'){echo "PROBLEM";}
                                   if($r['rct_tiporegistro']=='7'){echo "DEACTIVATION";}
                                   if($r['rct_tiporegistro']=='8'){echo "VACATION";}?></td>
+                        <td><?php echo $r['usu_nombres_usuario'].' '.$r['usu_apellidos_usuario']; ?></td>
                         <td><?php echo $r['cliente_nombre']; ?></td>
                         <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechain'])); ?></td>
                         <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechafin'])); ?></td>
@@ -384,12 +386,12 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                         <td><?php echo $r['rct_observacion']; ?></td>
                         <td>
                              <?php if ($r['rct_estado']=='1'){?> 
-                            <div class="callout callout-success">
+                            <div class="callout callout-info">
                                 <p>VALIDATE</p>
                             </div>
                             <?php } ?>
                             <?php if ($r['rct_estado']=='2'){?> 
-                            <div class="callout callout-info">
+                            <div class="callout callout-danger">
                                 <p>FINISHED</p>
                             </div>
                             <?php } ?>
@@ -399,7 +401,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                             </div>
                             <?php } ?>
                             <?php if ($r['rct_estado']=='3'){?> 
-                            <div class="callout callout-danger">
+                            <div class="callout callout-success">
                                 <p>EXTENDED</p>
                             </div>
                             <?php } ?>
@@ -423,7 +425,8 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                     <tfoot>
                       <tr style="font-size:8pt;font-weight: bold;color: white" bgcolor="424F7F">
                         <th> N</th>
-                        <th> REGISTER</th> 
+                        <th> REGISTER</th>
+                        <th> BY</th>
                         <th> CLIENT</th>
                         <th> START DATE</th>
                         <th> FINISH DATE</th> 
