@@ -334,8 +334,8 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $r['cliente_nombre']; ?></td>
                         <td><?php echo $r['rct_detalle']; ?></td>
                         <td><?php echo $r['rct_asignado']; ?></td>
-                        <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y h:m",strtotime($r['rct_fechafin'])); ?></td>
+                        <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechafin'])); ?></td>
                         <td><?php echo $r['rct_servidor']; ?></td>                        
                         <td><?php echo $r['rct_observacion']; ?></td>
                                            
@@ -367,8 +367,8 @@ unset($_SESSION['accion_usuario']);
                         <td><?php echo $v['cliente_nombre']; ?></td>
                         <td><?php echo $v['rct_detalle']; ?></td>
                         <td><?php echo $v['rct_asignado']; ?></td>
-                        <td><?php echo date("d-m-Y h:i",strtotime($v['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y h:i",strtotime($v['rct_fechafin'])); ?></td>
+                        <td><?php echo date("d-m-Y H:i",strtotime($v['rct_fechain'])); ?></td>
+                        <td><?php echo date("d-m-Y H:i",strtotime($v['rct_fechafin'])); ?></td>
                         <td><?php echo $v['rct_servidor']; ?></td>                        
                         <td><?php echo $v['rct_observacion']; ?></td>                                               
                       </tr>
@@ -389,7 +389,6 @@ unset($_SESSION['accion_usuario']);
                     </tfoot>
                    <?php } else { ?>
                     <div class="alert alert-info"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No changes in progress..!</div> 
-<!--                                        <center><label>Su búsqueda no produjo ningún resultado. </label></center>-->
 
 
                     <?php } ?>
