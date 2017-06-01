@@ -144,16 +144,16 @@ if(isset($_SESSION['usu_sesion']))         { $sesion = $_SESSION['usu_sesion'];}
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customers <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    

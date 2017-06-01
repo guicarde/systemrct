@@ -144,16 +144,16 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customers <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    
@@ -170,7 +170,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Roles <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Client </a></li>                    
+                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
                       <li><a href="MantenerClienteRol.php"><i class="fa fa-circle-o"></i> Manage Assign </a></li>                    
@@ -254,7 +254,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                               </div>
                      </div>
                     <div class="form-group">
-                          <label for="inputcliente" class="col-sm-2 control-label"><span class="pull-left">Client</span></label>
+                          <label for="inputcliente" class="col-sm-2 control-label"><span class="pull-left">Customer</span></label>
                                         <div class="col-sm-10">
                                             <select class="form-control select2" name="c_cliente" id="id_cliente" >
                                                 <option value="0">--SELECT--</option>
@@ -289,7 +289,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
 
                                             <option value=""> --SELECT--</option>
                                             <option value="1">SCHEDULE TASK</option>
-                                            <option value="2">NOTICE</option>
+                                            <option value="2">NEWS</option>
                                             <option value="3">CHANGE</option>
                                             <option value="4">REQUEST</option>
                                             <option value="5">INCIDENT</option>
@@ -347,7 +347,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                         <th> N</th>
                         <th> REGISTER</th> 
                         <th> BY</th>
-                        <th> CLIENT</th>
+                        <th> CUSTOMER</th>
                         <th> START DATE</th>
                         <th> FINISH DATE</th> 
                         <th> ASSIGNED</th>   
@@ -368,7 +368,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                       <tr style="font-size:8pt;font-weight: bold">
                         <td><?php echo $num;$num++; ?></td>
                         <td><?php if($r['rct_tiporegistro']=='1'){echo "SCHEDULE TASK";}
-                                  if($r['rct_tiporegistro']=='2'){echo "NOTICE";}
+                                  if($r['rct_tiporegistro']=='2'){echo "NEWS";}
                                   if($r['rct_tiporegistro']=='3'){echo "CHANGE";}
                                   if($r['rct_tiporegistro']=='4'){echo "REQUEST";}
                                   if($r['rct_tiporegistro']=='5'){echo "INCIDENT";}
@@ -427,7 +427,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                         <th> N</th>
                         <th> REGISTER</th>
                         <th> BY</th>
-                        <th> CLIENT</th>
+                        <th> CUSTOMER</th>
                         <th> START DATE</th>
                         <th> FINISH DATE</th> 
                         <th> ASSIGNED</th>   

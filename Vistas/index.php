@@ -201,16 +201,16 @@ unset($_SESSION['accion_usuario']);
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customer <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    
@@ -227,7 +227,7 @@ unset($_SESSION['accion_usuario']);
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Roles <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Client </a></li>                    
+                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
                       <li><a href="MantenerClienteRol.php"><i class="fa fa-circle-o"></i> Manage Assign </a></li>                    
@@ -313,7 +313,7 @@ unset($_SESSION['accion_usuario']);
                     <thead>
                       <tr style="font-size:8pt;font-weight: bold;color: black">
                         <th width="5%"> TICKET</th>                         
-                        <th width="10%"> CLIENT</th>                        
+                        <th width="10%"> CUSTOMER</th>                        
                         <th width="30%"> DETAIL</th>
                         <th width="15%"> SPECIALIST</th>
                         <th width="10%"> START DATE</th>
@@ -378,7 +378,7 @@ unset($_SESSION['accion_usuario']);
                     <tfoot>
                       <tr style="font-size:8pt;font-weight: bold;color: black" >
                         <th> TICKET</th> 
-                        <th> CLIENT</th>
+                        <th> CUSTOMER</th>
                         <th> DETAIL</th>
                         <th> SPECIALIST</th>
                         <th> START DATE</th>

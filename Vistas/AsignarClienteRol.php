@@ -146,16 +146,16 @@ if ($_SESSION['id_rol'] == 3) {
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customers <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    
@@ -222,13 +222,13 @@ if ($_SESSION['id_rol'] == 3) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            ASSIGN CLIENT
+                            ASSIGN CUSTOMER
                             <small>Information Assignation </small>
                         </h1>
                         <ol class="breadcrumb">
                             <li><a href="index.php"><i class="fa fa-user"></i> ROLE</a></li>
                             <li><a href="index.php">Roles</a></li>
-                            <li class="active">Assign Client</li>
+                            <li class="active">Assign Customer</li>
                         </ol>
                     </section>
 
@@ -239,7 +239,7 @@ if ($_SESSION['id_rol'] == 3) {
                                 <!-- Horizontal Form -->
                                 <div class="box box-info">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Select Clients by Role</h3>
+                                        <h3 class="box-title">Select Customers by Role</h3>
                                     </div><!-- /.box-header -->
                                     <!-- form start -->
                                     <form class="form-horizontal" action="../Controles/Registro/CRol.php" method="POST">
@@ -268,7 +268,7 @@ if ($_SESSION['id_rol'] == 3) {
 
 
                                             <div class="form-group">
-                                                <label for="inputpaterno" class="col-sm-2 control-label"><span class="pull-left">Select Client(s)</span></label>
+                                                <label for="inputpaterno" class="col-sm-2 control-label"><span class="pull-left">Select Customer(s)</span></label>
                                                 <div class="col-sm-10">                                            
                                                     <?php foreach ($clientes as $c) {
                                                         ?>
@@ -309,7 +309,7 @@ if ($_SESSION['id_rol'] == 3) {
                                             <h4 class="modal-title" id="myModalLabel">Mensaje</h4>
                                         </div>
                                         <div class="modal-body">
-                                            Se ha registrado satisfactoriamente el usuario.
+                                            succeful register
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

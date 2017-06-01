@@ -127,16 +127,16 @@ if(isset($_SESSION['cliente_fecharegistro']))         { $fechareg = $_SESSION['c
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="active treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                   <li class="active">
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customers <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li class="active"><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                      <li class="active"><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    
@@ -153,7 +153,7 @@ if(isset($_SESSION['cliente_fecharegistro']))         { $fechareg = $_SESSION['c
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Roles <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Client </a></li>                    
+                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
                       <li><a href="MantenerClienteRol.php"><i class="fa fa-circle-o"></i> Manage Assign </a></li>                    
@@ -203,13 +203,13 @@ if(isset($_SESSION['cliente_fecharegistro']))         { $fechareg = $_SESSION['c
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            REGISTER CLIENT
-            <small>Enter Client Data</small>
+            REGISTER CUSTOMER
+            <small>Enter CUSTOMER Data</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="index.php"><i class="fa fa-user"></i> CLIENT</a></li>
-            <li><a href="index.php">Client</a></li>
-            <li class="active">Register Client</li>
+            <li><a href="index.php"><i class="fa fa-user"></i> CUSTOMER</a></li>
+            <li><a href="index.php">Customer</a></li>
+            <li class="active">Register Customer</li>
           </ol>
         </section>
 
@@ -220,7 +220,7 @@ if(isset($_SESSION['cliente_fecharegistro']))         { $fechareg = $_SESSION['c
               <!-- Horizontal Form -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Client Information</h3>
+                  <h3 class="box-title">Customer Information</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form class="form-horizontal" action="../Controles/Registro/CCliente.php" method="POST">
@@ -228,7 +228,7 @@ if(isset($_SESSION['cliente_fecharegistro']))         { $fechareg = $_SESSION['c
                     <input type="hidden" name="idcli" value="<?php echo $id; ?>"/>
                   <div class="box-body">
                     <div class="form-group">
-                        <label for="inputnombre" class="col-sm-2 control-label"><span class="pull-left">Client</span></label>
+                        <label for="inputnombre" class="col-sm-2 control-label"><span class="pull-left">Customer</span></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="t_cliente" value="<?php echo $nombres; ?>" placeholder="Register Client">
                       </div>

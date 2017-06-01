@@ -147,16 +147,16 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customers <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    
@@ -173,7 +173,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Roles <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Client </a></li>                    
+                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
                       <li><a href="MantenerClienteRol.php"><i class="fa fa-circle-o"></i> Manage Assign </a></li>                    
@@ -254,7 +254,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
 
                                             <option value=""> --SELECT--</option>
                                             <option value="1" <?php if ($tipo=='1'){echo 'selected';}?>>SCHEDULE TASK</option>
-                                            <option value="2" <?php if ($tipo=='2'){echo 'selected';}?>>NOTICE</option>
+                                            <option value="2" <?php if ($tipo=='2'){echo 'selected';}?>>NEWS</option>
                                             <option value="3" <?php if ($tipo=='3'){echo 'selected';}?>>CHANGE</option>
                                             <option value="4" <?php if ($tipo=='4'){echo 'selected';}?>>REQUEST</option>
                                             <option value="5" <?php if ($tipo=='5'){echo 'selected';}?>>INCIDENT</option>
@@ -266,7 +266,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                         </div>
                      </div>
                       <div class="form-group">
-                          <label for="inputcliente" class="col-sm-2 control-label"><span class="pull-left">Client</span></label>
+                          <label for="inputcliente" class="col-sm-2 control-label"><span class="pull-left">Customer</span></label>
                                         <div class="col-sm-10">
                                             <select class="form-control select2" name="c_cliente" id="id_cliente" >
                                                             <option>--SELECT--</option>

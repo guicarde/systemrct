@@ -135,16 +135,16 @@ if (isset($_SESSION['accion_cliente']) && $_SESSION['accion_cliente'] != '') {
             <?php if ($_SESSION['id_rol']==3) {?>
             <li class="active treeview">
               <a href="#">
-                <i class="fa fa-group"></i> <span>CLIENT</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-group"></i> <span>CUSTOMER</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li class="active">
-                  <a href="#"><i class="fa fa-circle-o"></i> Clients <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#"><i class="fa fa-circle-o"></i> Customers <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Client </a></li>                    
+                    <li><a href="GuardarCliente.php"><i class="fa fa-circle-o"></i> Register Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
-                      <li class="active"><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Client </a></li>                    
+                      <li class="active"><a href="MantenerCliente.php"><i class="fa fa-circle-o"></i> Manage Customer </a></li>                    
                   </ul>                  
                 </li>
                    
@@ -161,7 +161,7 @@ if (isset($_SESSION['accion_cliente']) && $_SESSION['accion_cliente'] != '') {
                 <li>
                   <a href="#"><i class="fa fa-circle-o"></i> Roles <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
-                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Client </a></li>                    
+                      <li><a href="AsignarClienteRol.php"><i class="fa fa-circle-o"></i> Assign Customer </a></li>                    
                   </ul>
                   <ul class="treeview-menu">
                       <li><a href="MantenerClienteRol.php"><i class="fa fa-circle-o"></i> Manage Assign </a></li>                    
@@ -211,13 +211,13 @@ if (isset($_SESSION['accion_cliente']) && $_SESSION['accion_cliente'] != '') {
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            MANAGE CLIENT
-            <small>Search Client</small>
+            MANAGE CUSTOMER
+            <small>Search Customer</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="index.php"><i class="fa fa-user"></i> CLIENT</a></li>
-            <li><a href="index.php">Client</a></li>
-            <li class="active">Manage Client</li>
+            <li><a href="index.php"><i class="fa fa-user"></i> CUSTOMER</a></li>
+            <li><a href="index.php">Customer</a></li>
+            <li class="active">Manage Customer</li>
           </ol>
         </section>
 
@@ -231,16 +231,16 @@ if (isset($_SESSION['accion_cliente']) && $_SESSION['accion_cliente'] != '') {
               <!-- Horizontal Form -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Search Client</h3>
+                  <h3 class="box-title">Search Customer</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 
                      
                   <div class="box-body">
                     <div class="form-group">
-                        <label for="inputnombres" class="col-sm-2 control-label"><span class="pull-left">Client</span></label>
+                        <label for="inputnombres" class="col-sm-2 control-label"><span class="pull-left">Customer</span></label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="t_cliente" placeholder="Enter Client">
+                        <input type="text" class="form-control" name="t_cliente" placeholder="Enter Customer">
                       </div>
                     </div>    
                       
@@ -299,7 +299,7 @@ if (isset($_SESSION['accion_cliente']) && $_SESSION['accion_cliente'] != '') {
                     <thead>
                       <tr>
                         <th>N°</th>
-                        <th>Client</th>
+                        <th>Customer</th>
                         <th>Status</th>
                         <th>Register Date</th>
                         <th></th>
@@ -359,7 +359,7 @@ if (isset($_SESSION['accion_cliente']) && $_SESSION['accion_cliente'] != '') {
                     <tfoot>
                       <tr>
                         <th>N°</th>
-                        <th>Client</th>
+                        <th>Customer</th>
                         <th>Status</th>
                         <th>Register Date</th>
                         <th></th>
