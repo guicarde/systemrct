@@ -207,48 +207,52 @@ function setIdcliente($idcliente) {
             return null;
         }
     }
-        function listar_cambios_verde($idusu){
+        function listar_cambios_verde($idusu,$rol){
        
         $con = Conectar();
-        $sql = "SELECT * FROM rct_listar_cambios_en_progreso_verde($idusu)";
-        $res = pg_query($con,$sql);
-        $array=null;
-        while($fila = pg_fetch_assoc($res))
-        {
-                   $array[] = $fila;
-        }
-       
-        if(count($array)!=0){
-            return $array; 
-        }
-        else{
-            return null;
-        }
-    }
-            function listar_cambios_amarillo($idusu){
-       
-        $con = Conectar();
-        $sql = "SELECT * FROM rct_listar_cambios_en_progreso_amarillo($idusu)";
-        $res = pg_query($con,$sql);
-        $array=null;
-        while($fila = pg_fetch_assoc($res))
-        {
-                   $array[] = $fila;
-        }
-       
-        if(count($array)!=0){
-            return $array; 
-        }
-        else{
-            return null;
-        }
-    }
-            function listar_cambios_rojo($idusu){
-       
-        $con = Conectar();
-        $sql = "SELECT * FROM rct_listar_cambios_en_progreso_rojo($idusu)";
+        $sql = "SELECT * FROM rct_listar_cambios_en_progreso_verde($idusu,$rol)";
 //        var_dump($sql);
-//        exit(); 
+//        exit();
+        $res = pg_query($con,$sql);
+        $array=null;
+        while($fila = pg_fetch_assoc($res))
+        {
+                   $array[] = $fila;
+        }
+       
+        if(count($array)!=0){
+            return $array; 
+        }
+        else{
+            return null;
+        }
+    }
+            function listar_cambios_amarillo($idusu,$rol){
+       
+        $con = Conectar();
+        $sql = "SELECT * FROM rct_listar_cambios_en_progreso_amarillo($idusu,$rol)";
+//        var_dump($sql);
+//        exit();
+        $res = pg_query($con,$sql);
+        $array=null;
+        while($fila = pg_fetch_assoc($res))
+        {
+                   $array[] = $fila;
+        }
+       
+        if(count($array)!=0){
+            return $array; 
+        }
+        else{
+            return null;
+        }
+    }
+            function listar_cambios_rojo($idusu,$rol){
+       
+        $con = Conectar();
+        $sql = "SELECT * FROM rct_listar_cambios_en_progreso_rojo($idusu,$rol)";
+//        var_dump($sql);
+//        exit();
         $res = pg_query($con,$sql);
         $array=null;
         while($fila = pg_fetch_assoc($res))

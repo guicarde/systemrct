@@ -9,13 +9,13 @@ $rct = new Rct();
 $rcts = $rct->listar_en_progreso($_SESSION['id_usuario']);
 
 $verde = new Rct();
-$verdes = $verde->listar_cambios_verde($_SESSION['id_usuario']);
+$verdes = $verde->listar_cambios_verde($_SESSION['id_usuario'],$_SESSION['id_rol']);
 
 $amarillo = new Rct();
-$amarillos = $amarillo->listar_cambios_amarillo($_SESSION['id_usuario']);
+$amarillos = $amarillo->listar_cambios_amarillo($_SESSION['id_usuario'],$_SESSION['id_rol']);
 
 $rojo = new Rct();
-$rojos = $rojo->listar_cambios_rojo($_SESSION['id_usuario']);
+$rojos = $rojo->listar_cambios_rojo($_SESSION['id_usuario'],$_SESSION['id_rol']);
 //var_dump($rojos);
 //exit();
 
