@@ -412,11 +412,104 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                            <?php } else { echo '<a class="label label-danger label-mini"> DONT HAVE </a>';}?>     
                         </td>
                         <td>
-                            <form method='POST' id="formrct" action="../Controles/Registro/CRct.php">
-                                <input type="hidden" name="hidden_rct" value="buscarid">
-                                <input type="hidden" name="idrct" value="<?php echo $r['rct_idrct'] ?>">
-                                <button type="submit" class="btn btn-primary btn-xs" title="Edit"><i class="fa fa-pencil"></i></button>
-                            </form>    
+                            <button type="button" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#exampleModalLong<?php echo $r['rct_idrct'];?>" title="Editar" data-whatever="@mdo"><i class="fa fa-pencil"> </i> <b>EDIT</b></button>
+                             <form action="../Controles/Registro/CRct.php" method="POST" enctype="multipart/form-data">
+                                                                <div class="modal fade" id="exampleModalLong<?php echo $r['rct_idrct'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                <h5 class="modal-title" id="exampleModalLongTitle">EDIT RCT</h5>                                                                                
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <input type="hidden" name="hidden_rct" value="actualizar">
+                                                                                <input type="hidden" name="idrct" value="<?php echo $r['rct_idrct'] ?>">
+                                                                                <input type="hidden" name="archivo" value="<?php echo $r['rct_archivo'] ?>">
+                                                                                
+                                                                                
+                                                                                        <label for="recipient-name" class="control-label">REGISTER:<a style="color:red"> (*)</a></label>
+                                                                                        <select class="form-control select2" style="width: 100%;" name="c_tipo" required>
+                                                                                            <option>--SELECCIONE--</option>
+                                                                                            <option value="1" <?php if ($r['rct_tiporegistro']=='1'){echo 'selected';}?>>SCHEDULE TASK</option>
+                                                                                            <option value="2" <?php if ($r['rct_tiporegistro']=='2'){echo 'selected';}?>>NEWS</option>
+                                                                                            <option value="3" <?php if ($r['rct_tiporegistro']=='3'){echo 'selected';}?>>CHANGE</option>
+                                                                                            <option value="4" <?php if ($r['rct_tiporegistro']=='4'){echo 'selected';}?>>REQUEST</option>
+                                                                                            <option value="5" <?php if ($r['rct_tiporegistro']=='5'){echo 'selected';}?>>INCIDENT</option>
+                                                                                            <option value="6" <?php if ($r['rct_tiporegistro']=='6'){echo 'selected';}?>>PROBLEM</option>
+                                                                                            <option value="7" <?php if ($r['rct_tiporegistro']=='7'){echo 'selected';}?>>DEACTIVATION</option>
+                                                                                            <option value="8" <?php if ($r['rct_tiporegistro']=='8'){echo 'selected';}?>>VACATION</option>                                                                                            
+                                                                                        </select>
+                                                                                        <br><br>
+                                                                                        
+                                                                                        <label for="recipient-name" class="control-label">CUSTOMER:<a style="color:red"> (*)</a></label>
+                                                                                        <select class="form-control select2" style="width: 100%;" name="c_cliente" required>
+                                                                                            <option>--SELECCIONE--</option>
+                                                                                             <?php foreach ($clientes as $c) {                                                                       ?>
+                                                                                            <option value="<?php echo $c['cliente_idcliente']; ?>" <?php if ($r['cliente_nombre'] == $c['cliente_nombre']) echo 'selected'; ?>><?php echo $c['cliente_nombre']; ?></option>                                                                                            
+                                                                                            <?php } ?>
+                                                                                        </select>
+                                                                                        <br><br>
+                                                                                        
+                                                                                        <label for="recipient-name" class="control-label">START DATE:<a style="color:red"> (*)</a></label>
+                                                                                        <input type="date" name="t_fecha_in" class="form-control" style="width: 100%;"  value="<?php echo substr($r['rct_fechain'], 0, 10); ?>" required>
+                                                                                        <br><br>
+                                                                                
+                                                                                        <label for="recipient-name" class="control-label">START TIME:<a style="color:red"> (*)</a></label>
+                                                                                        <input type="time" name="t_hora_in" class="form-control" style="width: 100%;" value="<?php echo substr($r['rct_fechain'],11,20);?>" required>
+                                                                                        <br><br>
+                                                                                
+                                                                                        <label for="recipient-name" class="control-label">FINISH DATE:<a style="color:red"> (*)</a></label>
+                                                                                        <input type="date" name="t_fecha_fin" class="form-control" style="width: 100%;" value="<?php echo substr($r['rct_fechafin'], 0, 10); ?>" required>
+                                                                                        <br><br>
+                                                                                
+                                                                                        <label for="recipient-name" class="control-label">FINISH TIME:<a style="color:red"> (*)</a></label>
+                                                                                        <input type="time" name="t_hora_fin" class="form-control" style="width: 100%;"  value="<?php echo substr($r['rct_fechafin'],11,20);?>" required>
+                                                                                        <br><br>
+                                                                                
+                                                                                    <label for="recipient-name" class="form-control-label">ASSIGNED PERSON:</label>
+                                                                                    <input type="text" class="form-control" style="width: 100%;" name="t_asignado" value="<?php echo $r['rct_asignado']; ?>">
+                                                                                    <br><br>
+                                                                                
+                                                                                    <label for="recipient-name" class="form-control-label">TICKET:</label>
+                                                                                    <input type="text" class="form-control"  style="width: 100%;"  name="t_ticket" value="<?php echo $r['rct_ticket']; ?>">
+                                                                                    <br><br>
+                                                                                
+                                                                                    <label for="recipient-name" class="form-control-label">SERVER:</label>
+                                                                                    <textarea class="form-control" style="width: 100%;"  name="ta_servidor" rows="8"><?php echo $r['rct_servidor']; ?></textarea>
+                                                                                    <br><br>
+                                                                                
+                                                                                    <label for="recipient-name" class="form-control-label">DETAIL:</label>
+                                                                                    <textarea class="form-control" style="width: 100%;"  name="ta_detalle" rows="8"><?php echo $r['rct_detalle']; ?></textarea>
+                                                                                    <br><br>
+                                                                                
+                                                                                    <label for="recipient-name" class="form-control-label">OBSERVATION:</label>
+                                                                                    <textarea class="form-control" style="width: 100%;" name="ta_observacion" rows="8"><?php echo $r['rct_observacion']; ?></textarea>
+                                                                                    <br><br>
+                                                                               
+                                                                                        <label for="recipient-name" class="control-label">STATUS:<a style="color:red"> (*)</a></label>
+                                                                                        <select class="form-control select2" style="width: 100%;" name="c_estado" required>
+                                                                                            <option>--SELECCIONE--</option>
+                                                                                            <option value="1" <?php if ($r['rct_estado'] == '1') {echo 'selected';}?>><?php echo 'VALIDATE'; ?></option>
+                                                                                            <option value="2" <?php if ($r['rct_estado'] == '2') {echo 'selected';}?>><?php echo 'FINISHED'; ?></option>
+                                                                                            <option value="3" <?php if ($r['rct_estado'] == '3') {echo 'selected';}?>><?php echo 'EXTENDED'; ?></option>
+                                                                                            <option value="4" <?php if ($r['rct_estado'] == '4') {echo 'selected';}?>><?php echo 'IN PROGRESS'; ?></option>                                                                                            
+                                                                                        </select>
+                                                                                        <br><br>
+                                                                                
+                                                                                        <label for="recipient-name" class="control-label">FILE:</label>
+                                                                                        <input id="file-xxx" class="file" multiple="true" data-show-upload="false" value="<?php echo $r['rct_archivo']; ?>" data-show-caption="true" type="file" name="fileArchivo">
+                                                                                        <br><br>      
+                                                                              </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+                                                                                <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                </form>
+                            
                         </td>
                       </tr>
                       <?php } ?>
@@ -650,6 +743,10 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
     <script src="dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+     <!-- Unicas Librerias Utiliazabas para subir archivos imagens, audio, etc-->
+        <link href="../Recursos/filebootstrap/kartik-v-bootstrap-fileinput-d66e684/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="../Recursos/filebootstrap/kartik-v-bootstrap-fileinput-d66e684/js/fileinput.js" type="text/javascript"></script>    
+        <!-- fin -->
     <!-- page script -->
     <script>
       $(function () {
@@ -668,63 +765,7 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
       $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
-
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-        //Money Euro
-        $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-              ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
-            },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-        );
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-          checkboxClass: 'icheckbox_minimal-blue',
-          radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-          checkboxClass: 'icheckbox_minimal-red',
-          radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-          checkboxClass: 'icheckbox_flat-green',
-          radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-          showInputs: false
-        });
-      });
+ 
     </script>
   </body>
 </html>

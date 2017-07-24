@@ -4,33 +4,12 @@ if (!isset($_SESSION['username'])) {
     header("location:login.php");
 }
 //------------------------------------------------
-if(!isset($_SESSION['accion_rct'])){ 
-    $_SESSION['accion_rct']="";
-}
 if(!isset($_SESSION['mensaje_rct'])){ 
     $_SESSION['mensaje_rct']="Successful registration";
 }
 include_once '../DAO/Registro/Cliente.php';
 $cliente = new Cliente();
 $clientes = $cliente->listar_por_rol($_SESSION['id_rol']);
-
-
-if(isset($_SESSION['rct_idrct']))         { $id = $_SESSION['rct_idrct'];} else{ $id =""; }
-if(isset($_SESSION['rct_tiporegistro']))         { $tipo = $_SESSION['rct_tiporegistro'];} else{ $tipo =""; }
-if(isset($_SESSION['rct_fechain']))         { $fechain = $_SESSION['rct_fechain'];} else{ $fechain =""; }
-if(isset($_SESSION['rct_fechafin']))         { $fechafin = $_SESSION['rct_fechafin'];} else{ $fechafin =""; }
-if(isset($_SESSION['rct_asignado']))         { $asignado = $_SESSION['rct_asignado'];} else{ $asignado =""; }
-if(isset($_SESSION['rct_ticket']))         { $ticket = $_SESSION['rct_ticket'];} else{ $ticket =""; }
-if(isset($_SESSION['rct_servidor']))         { $servidor = $_SESSION['rct_servidor'];} else{ $servidor =""; }
-if(isset($_SESSION['rct_detalle']))         { $detalle = $_SESSION['rct_detalle'];} else{ $detalle =""; }
-if(isset($_SESSION['rct_observacion']))         { $observacion = $_SESSION['rct_observacion'];} else{ $observacion =""; }
-if(isset($_SESSION['rct_archivo']))         { $archivo = $_SESSION['rct_archivo'];} else{ $archivo =""; }
-if(isset($_SESSION['rct_fecharegistro']))         { $fechareg = $_SESSION['rct_fecharegistro'];} else{ $fechareg =""; }
-if(isset($_SESSION['rct_estado']))         { $estado = $_SESSION['rct_estado'];} else{ $estado =""; }
-if(isset($_SESSION['usu_idusu']))         { $idusu = $_SESSION['usu_idusu'];} else{ $idusu =""; }
-if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['cliente_idcliente'];} else{ $idcliente =""; }
-//var_dump(substr($fechain,11,20));exit();
-
 
 ?>
 <!DOCTYPE html>
@@ -244,8 +223,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form class="form-horizontal" action="../Controles/Registro/CRct.php" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" id="hiddenrct" name="hidden_rct" value="save">  
-                    <input type="hidden" name="idrct" value="<?php echo $id; ?>"/>
+                    <input type="hidden" id="hiddenrct" name="hidden_rct" value="registrar">  
                   <div class="box-body">
                     <div class="form-group">
                         <label for="inputregistro" class="col-sm-2 control-label"><span class="pull-left">Register</span><a style="color:red">(*)</a></label>
@@ -253,14 +231,14 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                             <select class="form-control select2" name="c_tipo" id="id_tipo" >
 
                                             <option value=""> --SELECT--</option>
-                                            <option value="1" <?php if ($tipo=='1'){echo 'selected';}?>>SCHEDULE TASK</option>
-                                            <option value="2" <?php if ($tipo=='2'){echo 'selected';}?>>NEWS</option>
-                                            <option value="3" <?php if ($tipo=='3'){echo 'selected';}?>>CHANGE</option>
-                                            <option value="4" <?php if ($tipo=='4'){echo 'selected';}?>>REQUEST</option>
-                                            <option value="5" <?php if ($tipo=='5'){echo 'selected';}?>>INCIDENT</option>
-                                            <option value="6" <?php if ($tipo=='6'){echo 'selected';}?>>PROBLEM</option>
-                                            <option value="7" <?php if ($tipo=='7'){echo 'selected';}?>>DEACTIVATION</option>
-                                            <option value="8" <?php if ($tipo=='8'){echo 'selected';}?>>VACATION</option>
+                                            <option value="1">SCHEDULE TASK</option>
+                                            <option value="2">>NEWS</option>
+                                            <option value="3">CHANGE</option>
+                                            <option value="4">REQUEST</option>
+                                            <option value="5">INCIDENT</option>
+                                            <option value="6">PROBLEM</option>
+                                            <option value="7">DEACTIVATION</option>
+                                            <option value="8">VACATION</option>
                                             
                                                       </select>
                                         </div>
@@ -273,7 +251,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                                   <?php foreach ($clientes as $c) {   
                                                                     ?>
                                                                     
-                                                            <option value="<?php echo $c['cliente_idcliente']; ?>" <?php if ($idcliente == $c['cliente_idcliente']) echo 'selected'; ?>><?php echo $c['cliente_nombre']; ?></option>
+                                                            <option value="<?php echo $c['cliente_idcliente']; ?>"><?php echo $c['cliente_nombre']; ?></option>
                                                                 <?php } ?>
                                                       </select>
                                         </div>
@@ -287,7 +265,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                <input type="date" name="t_fecha_in" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" value="<?php echo substr($fechain,0,10);?>" data-mask>
+                                                <input type="date" name="t_fecha_in" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
                                              </div>
                                         </div> 
                           <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Start Time (HH:MM)</span><a style="color:red">(*)</a></label>
@@ -296,7 +274,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-clock-o"></i>
                                                     </div>
-                                                <input type="time" name="t_hora_in" value="<?php echo substr($fechain,11,20);?>" class="form-control">
+                                                <input type="time" name="t_hora_in" class="form-control">
                                              </div>
                                         </div>
                       </div>
@@ -307,7 +285,7 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                <input type="date" name="t_fecha_fin" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" value="<?php echo substr($fechafin,0,10);?>" data-mask>
+                                                <input type="date" name="t_fecha_fin" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
                                              </div>
                                         </div>
                           <label for="inputfecha" class="col-sm-2 control-label"><span class="pull-left">Finish Time (HH:MM)</span><a style="color:red">(*)</a></label>
@@ -316,44 +294,44 @@ if(isset($_SESSION['cliente_idcliente']))         { $idcliente = $_SESSION['clie
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-clock-o"></i>
                                                     </div>
-                                                <input type="time" name="t_hora_fin" value="<?php echo substr($fechafin,11,20);?>" class="form-control">
+                                                <input type="time" name="t_hora_fin" class="form-control">
                                              </div>
                                         </div>
                       </div>
                       <div class="form-group">
                           <label for="inputnombre" class="col-sm-2 control-label"><span class="pull-left">Assigned person</span></label>
                                 <div class="col-sm-4">
-                                  <input type="text" class="form-control" name="t_asignado" value="<?php echo $asignado; ?>" placeholder="Enter Person Assigned">
+                                  <input type="text" class="form-control" name="t_asignado" placeholder="Enter Person Assigned">
                                 </div>
                           <label for="inputnombre" class="col-sm-2 control-label"><span class="pull-left">Ticket</span></label>
                                 <div class="col-sm-4">
-                                  <input type="text" class="form-control" name="t_ticket" value="<?php echo $ticket; ?>" placeholder="Enter Ticket Number">
+                                  <input type="text" class="form-control" name="t_ticket" placeholder="Enter Ticket Number">
                                 </div>
                       </div>
                      <div class="form-group">
                          <label class="col-sm-2 col-sm-2 control-label"><span class="pull-left">Server</span></label>
                               <div class="col-sm-4">
-                                  <textarea name="ta_servidor" id="id_servidor" class="form-control" rows="8" placeholder="Enter Servers" ><?php echo $servidor;?></textarea>
+                                  <textarea name="ta_servidor" id="id_servidor" class="form-control" rows="8" placeholder="Enter Servers" ></textarea>
                               </div>
                          <label class="col-sm-2 col-sm-2 control-label"><span class="pull-left">Detail</span></label>
                               <div class="col-sm-4">
-                                  <textarea name="ta_detalle" id="id_detalle" class="form-control" rows="8" placeholder="Enter Details" ><?php echo $detalle;?></textarea>
+                                  <textarea name="ta_detalle" id="id_detalle" class="form-control" rows="8" placeholder="Enter Details" ></textarea>
                               </div>
                      </div>
                      <div class="form-group">
                          <label class="col-sm-2 col-sm-2 control-label"><span class="pull-left">Observation</span></label>
                               <div class="col-sm-4">
-                                  <textarea name="ta_observacion" id="id_observacion" class="form-control" rows="8" placeholder="Enter Observation" ><?php echo $observacion;?></textarea>
+                                  <textarea name="ta_observacion" id="id_observacion" class="form-control" rows="8" placeholder="Enter Observation" ></textarea>
                               </div>
                          <label class="col-sm-2 col-sm-2 control-label"><span class="pull-left">Status</span><a style="color:red">(*)</a></label>
                               <div class="col-sm-4">
-                                    <select class="form-control select2" name="c_estado" id="id_estado" >
+                                    <select class="form-control select2" name="c_estado" id="id_estado" required>
 
                                             <option value=""> --SELECT--</option>
-                                            <option value="1" <?php if ($estado=='1'){echo 'selected';}?>>VALIDATE</option>
-                                            <option value="2" <?php if ($estado=='2'){echo 'selected';}?>>FINISHED</option>
-                                            <option value="3" <?php if ($estado=='3'){echo 'selected';}?>>EXTENDED</option>
-                                            <option value="4" <?php if ($estado=='4'){echo 'selected';}?>>IN PROGRESS</option>                                            
+                                            <option value="1">VALIDATE</option>
+                                            <option value="2">FINISHED</option>
+                                            <option value="3">EXTENDED</option>
+                                            <option value="4">IN PROGRESS</option>                                            
                                      </select>
                               </div>
                      </div>
