@@ -496,8 +496,8 @@ if (isset($_SESSION['accion_rct']) && $_SESSION['accion_rct'] != '') {
                                                                                         </select>
                                                                                         <br><br>
                                                                                 
-                                                                                        <label for="recipient-name" class="control-label">FILE:</label>
-                                                                                        <input id="file-xxx" class="file" multiple="true" data-show-upload="false" value="<?php echo $r['rct_archivo']; ?>" data-show-caption="true" type="file" name="fileArchivo">
+                                                                                        <label for="recipient-name" class="control-label">FILE:</label><br>
+                                                                                        <input id="file-xxx" class="file" multiple="true" data-show-upload="false" value="<?php echo $r['rct_archivo']; ?>" data-show-caption="true" type="file" style="width: 100%;" name="fileArchivo">
                                                                                         <br><br>      
                                                                               </div>
                                                                             <div class="modal-footer">
