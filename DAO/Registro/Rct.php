@@ -189,6 +189,37 @@ function setIdcliente($idcliente) {
             return null;
         }
     }
+    
+        function listar_noticias_en_progreso(){
+       
+        $con = Conectar();
+        $sql = "SELECT * FROM rct_listar_noticias_progreso()";
+        $res = pg_query($con,$sql);
+        $array=null;
+        while($fila = pg_fetch_assoc($res))
+        {
+                   $array[] = $fila;
+        }
+       
+        if(count($array)!=0){
+            return $array; 
+        }
+        else{
+            return null;
+        }
+    }
+    
+    function activar_noticias(){
+        $con = Conectar();
+        $sql = "SELECT * FROM rct_activar_noticia()";  
+        pg_query($con,$sql); 
+    }
+    function desactivar_noticias(){
+        $con = Conectar();
+        $sql = "SELECT * FROM rct_desactivar_noticia()";  
+        pg_query($con,$sql); 
+    } 
+       
        function listar_en_progreso($idusu){
        
         $con = Conectar();
@@ -247,8 +278,7 @@ function setIdcliente($idcliente) {
             return null;
         }
     }
-            function listar_cambios_rojo($idusu,$rol){
-       
+   function listar_cambios_rojo($idusu,$rol){
         $con = Conectar();
         $sql = "SELECT * FROM rct_listar_cambios_en_progreso_rojo($idusu,$rol)";
 //        var_dump($sql);
@@ -297,7 +327,6 @@ function setIdcliente($idcliente) {
                 $_SESSION['rct_estado'] = $a['rct_estado'];
                 $_SESSION['usu_idusu'] = $a['usu_idusu'];
                 $_SESSION['cliente_idcliente'] = $a['cliente_idcliente'];
-                
                 $_SESSION['accion_rct'] = 'editar';
                 
             } 

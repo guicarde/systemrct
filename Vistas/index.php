@@ -5,8 +5,6 @@ if (!isset($_SESSION['username'])) {
     
 }
 include_once '../DAO/Registro/Rct.php';
-$rct = new Rct();
-$rcts = $rct->listar_en_progreso($_SESSION['id_usuario']);
 
 $verde = new Rct();
 $verdes = $verde->listar_cambios_verde($_SESSION['id_usuario'],$_SESSION['id_rol']);
@@ -16,7 +14,18 @@ $amarillos = $amarillo->listar_cambios_amarillo($_SESSION['id_usuario'],$_SESSIO
 
 $rojo = new Rct();
 $rojos = $rojo->listar_cambios_rojo($_SESSION['id_usuario'],$_SESSION['id_rol']);
-//var_dump($rojos);
+
+
+$activar = new Rct();
+$activar->activar_noticias();
+
+$desactivar = new Rct();
+$desactivar->desactivar_noticias();
+
+$noticia = new Rct();
+$noticias = $noticia->listar_noticias_en_progreso();
+
+//var_dump($noticias);
 //exit();
 
 unset($_SESSION['mensaje_cliente']);
@@ -75,7 +84,7 @@ unset($_SESSION['accion_usuario']);
      <META HTTP-EQUIV="REFRESH" CONTENT="60;URL=index.php">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>INTEGRATION  | UNIQUE</title>
+    <title>SYSTEM  | RCT</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -104,6 +113,8 @@ unset($_SESSION['accion_usuario']);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="../Recursos/assets/js/gritter/css/jquery.gritter.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -296,109 +307,194 @@ unset($_SESSION['accion_usuario']);
               
 
               <!-- Chat box -->
-              <div class="box box-success">
-                <div class="box-header">
-                  <i class="fa fa-tasks"></i>
-                  <h3 class="box-title">CHANGES IN PROGRESS</h3><br><br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#FF5733;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;FINISHED CHANGES</strong><br> 
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#F4D03F;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;CHANGES TO FINISH</strong><br> 
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#58D68D;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;CHANGES IN PROGRESS</strong><br> 
-                                    
-                </div>
-                <div class="box-body chat" >
-                 <div class="table-responsive">
-                  <table id="example1" class="table table-bordered">
- <?php if ($verdes != null or $amarillos!= null or $rojos!= null ) { ?>
-                     
-                    <thead>
-                      <tr style="font-size:8pt;font-weight: bold;color: black">
-                        <th width="5%"> TICKET</th>                         
-                        <th width="10%"> CUSTOMER</th>                        
-                        <th width="30%"> DETAIL</th>
-                        <th width="15%"> SPECIALIST</th>
-                        <th width="10%"> START DATE</th>
-                        <th width="10%"> FINISH DATE</th>  
-                        <th width="10%"> SERVERS</th> 
-                        <th width="10%"> OBSERVATION</th> 
-                         
-                      </tr>
-                    </thead>
-                    <tbody>
-   <?php    
-    if($rojos!= null) { foreach ($rojos as $r) { 
-        ?>
-                      <tr style="font-size:10pt;font-weight: bold; color:white
-                          " class="parpadea" bgcolor="#FF5733">
-                        
-                        <td><?php echo $r['rct_ticket']; ?></td>
-                        <td><?php echo $r['cliente_nombre']; ?></td>
-                        <td><?php echo $r['rct_detalle']; ?></td>
-                        <td><?php echo $r['rct_asignado']; ?></td>
-                        <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechafin'])); ?></td>
-                        <td><?php echo $r['rct_servidor']; ?></td>                        
-                        <td><?php echo $r['rct_observacion']; ?></td>
-                                           
-                      </tr>
- <?php } }?>
-                     <?php
-    $num = 1;
-    if($amarillos!= null) { foreach ($amarillos as $a) {
-        ?>
-                      <tr style="font-size:10pt;font-weight: bold;color:darkblue" bgcolor="#F4D03F">
-                        <td><?php echo $a['rct_ticket']; ?></td>
-                        <td><?php echo $a['cliente_nombre']; ?></td>
-                        <td><?php echo $a['rct_detalle']; ?></td>
-                        <td><?php echo $a['rct_asignado']; ?></td>
-                        <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechafin'])); ?></td>
-                        <td><?php echo $a['rct_servidor']; ?></td>                        
-                        <td><?php echo $a['rct_observacion']; ?></td>
-                                               
-                      </tr>
-    <?php }} ?>
-                      <?php
-    $num = 1;
-    if($verdes!= null) { foreach ($verdes as $v) {
-        ?>
-                      <tr style="font-size:10pt;font-weight: bold; color:#34495E" bgcolor="#58D68D">
-                        
-                        <td><?php echo $v['rct_ticket']; ?></td>
-                        <td><?php echo $v['cliente_nombre']; ?></td>
-                        <td><?php echo $v['rct_detalle']; ?></td>
-                        <td><?php echo $v['rct_asignado']; ?></td>
-                        <td><?php echo date("d-m-Y H:i",strtotime($v['rct_fechain'])); ?></td>
-                        <td><?php echo date("d-m-Y H:i",strtotime($v['rct_fechafin'])); ?></td>
-                        <td><?php echo $v['rct_servidor']; ?></td>                        
-                        <td><?php echo $v['rct_observacion']; ?></td>                                               
-                      </tr>
-    <?php }} ?>
-                    </tbody>
-                     
-                    <tfoot>
-                      <tr style="font-size:8pt;font-weight: bold;color: black" >
-                        <th> TICKET</th> 
-                        <th> CUSTOMER</th>
-                        <th> DETAIL</th>
-                        <th> SPECIALIST</th>
-                        <th> START DATE</th>
-                        <th> FINISH DATE</th>  
-                        <th> SERVERS</th> 
-                        <th> OBSERVATION</th>      
-                      </tr>
-                    </tfoot>
-                   <?php } else { ?>
-                    <div class="alert alert-info"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No changes in progress..!</div> 
+              <div class="nav-tabs-custom">
+                  <ul class="nav nav-tabs pull-right">
+                              
+                              <li><a href="#news" data-toggle="tab">NEWS</a></li>
+                              <li class="active"><a href="#changes" data-toggle="tab">CHANGES</a></li>
+                            
+                            
+                            
+                            <li class="pull-left header"><i class="fa fa-inbox"></i> Changes and News</li>
+                  </ul>
+                  <div class="tab-content no-padding">
+                      <div class="chart tab-pane active" id="changes" style="position: relative;">
+                      <div class="box box-success">
+                      <div class="box-header">
+                        <i class="fa fa-tasks"></i>
+                        <h3 class="box-title">CHANGES IN PROGRESS</h3><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#FF5733;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;FINISHED CHANGES</strong><br> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#F4D03F;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;CHANGES TO FINISH</strong><br> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#58D68D;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;CHANGES IN PROGRESS</strong><br> 
+
+                      </div>
+                      <div class="box-body chat" >
+                       <div class="table-responsive">
+                        <table id="example1" class="table table-bordered">
+       <?php if ($verdes != null or $amarillos!= null or $rojos!= null ) { ?>
+
+                          <thead>
+                            <tr style="font-size:8pt;font-weight: bold;color: black">
+                              <th width="5%"> TICKET</th>                         
+                              <th width="10%"> CUSTOMER</th>                        
+                              <th width="30%"> DETAIL</th>
+                              <th width="15%"> SPECIALIST</th>
+                              <th width="10%"> START DATE</th>
+                              <th width="10%"> FINISH DATE</th>  
+                              <th width="10%"> SERVERS</th> 
+                              <th width="10%"> OBSERVATION</th> 
+
+                            </tr>
+                          </thead>
+                          <tbody>
+         <?php    
+          if($rojos!= null) { foreach ($rojos as $r) { 
+              ?>
+                            <tr style="font-size:10pt;font-weight: bold; color:white
+                                " class="parpadea" bgcolor="#FF5733">
+
+                              <td><?php echo $r['rct_ticket']; ?></td>
+                              <td><?php echo $r['cliente_nombre']; ?></td>
+                              <td><?php echo $r['rct_detalle']; ?></td>
+                              <td><?php echo $r['rct_asignado']; ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechain'])); ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($r['rct_fechafin'])); ?></td>
+                              <td><?php echo $r['rct_servidor']; ?></td>                        
+                              <td><?php echo $r['rct_observacion']; ?></td>
+
+                            </tr>
+       <?php } }?>
+                           <?php
+          $num = 1;
+          if($amarillos!= null) { foreach ($amarillos as $a) {
+              ?>
+                            <tr style="font-size:10pt;font-weight: bold;color:darkblue" bgcolor="#F4D03F">
+                              <td><?php echo $a['rct_ticket']; ?></td>
+                              <td><?php echo $a['cliente_nombre']; ?></td>
+                              <td><?php echo $a['rct_detalle']; ?></td>
+                              <td><?php echo $a['rct_asignado']; ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechain'])); ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($a['rct_fechafin'])); ?></td>
+                              <td><?php echo $a['rct_servidor']; ?></td>                        
+                              <td><?php echo $a['rct_observacion']; ?></td>
+
+                            </tr>
+          <?php }} ?>
+                            <?php
+          $num = 1;
+          if($verdes!= null) { foreach ($verdes as $v) {
+              ?>
+                            <tr style="font-size:10pt;font-weight: bold; color:#34495E" bgcolor="#58D68D">
+
+                              <td><?php echo $v['rct_ticket']; ?></td>
+                              <td><?php echo $v['cliente_nombre']; ?></td>
+                              <td><?php echo $v['rct_detalle']; ?></td>
+                              <td><?php echo $v['rct_asignado']; ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($v['rct_fechain'])); ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($v['rct_fechafin'])); ?></td>
+                              <td><?php echo $v['rct_servidor']; ?></td>                        
+                              <td><?php echo $v['rct_observacion']; ?></td>                                               
+                            </tr>
+          <?php }} ?>
+                          </tbody>
+
+                          <tfoot>
+                            <tr style="font-size:8pt;font-weight: bold;color: black" >
+                              <th> TICKET</th> 
+                              <th> CUSTOMER</th>
+                              <th> DETAIL</th>
+                              <th> SPECIALIST</th>
+                              <th> START DATE</th>
+                              <th> FINISH DATE</th>  
+                              <th> SERVERS</th> 
+                              <th> OBSERVATION</th>      
+                            </tr>
+                          </tfoot>
+                         <?php } else { ?>
+                          <div class="alert alert-info"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No changes in progress..!</div> 
 
 
-                    <?php } ?>
-                  </table>
-                 </div>
-                    
-                    
-                </div><!-- /.chat -->
-                
-              </div><!-- /.box (chat box) -->
+                          <?php } ?>
+                        </table>
+                       </div>
+
+
+                      </div><!-- /.chat -->
+
+                    </div><!-- /.box (chat box) -->
+                      </div>
+                      <div class="chart tab-pane active" id="news" style="position: relative;">
+                      <div class="box box-success">
+                      <div class="box-header">
+                        <i class="fa fa-tasks"></i>
+                        <h3 class="box-title">NEWS IN PROGRESS</h3><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#58D68D;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;NEWS IN PROGRESS</strong><br> 
+
+                      </div>
+                      <div class="box-body chat" >
+                       <div class="table-responsive">
+                        <table id="example2" class="table table-bordered">
+                        <?php if ($noticias != null ) { ?>
+                          <thead>
+                            <tr style="font-size:8pt;font-weight: bold;color: black">
+                              <th width="5%"> TICKET</th>                         
+                              <th width="10%"> CUSTOMER</th>                        
+                              <th width="30%"> DETAIL</th>
+                              <th width="15%"> SPECIALIST</th>
+                              <th width="10%"> START DATE</th>
+                              <th width="10%"> FINISH DATE</th>  
+                              <th width="10%"> SERVERS</th> 
+                              <th width="10%"> OBSERVATION</th> 
+
+                            </tr>
+                          </thead>
+                          <tbody>
+         <?php    
+            foreach ($noticias as $n) { 
+              ?>
+                            <tr style="font-size:10pt;font-weight: bold; color:white
+                                " class="parpadea" bgcolor="#58D68D">
+
+                              <td><?php echo $n['rct_ticket']; ?></td>
+                              <td><?php echo $n['cliente_nombre']; ?></td>
+                              <td><?php echo $n['rct_detalle']; ?></td>
+                              <td><?php echo $n['rct_asignado']; ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($n['rct_fechain'])); ?></td>
+                              <td><?php echo date("d-m-Y H:i",strtotime($n['rct_fechafin'])); ?></td>
+                              <td><?php echo $n['rct_servidor']; ?></td>                        
+                              <td><?php echo $n['rct_observacion']; ?></td>
+
+                            </tr>
+                        <?php } ?>
+                          </tbody>
+
+                          <tfoot>
+                            <tr style="font-size:8pt;font-weight: bold;color: black" >
+                              <th> TICKET</th> 
+                              <th> CUSTOMER</th>
+                              <th> DETAIL</th>
+                              <th> SPECIALIST</th>
+                              <th> START DATE</th>
+                              <th> FINISH DATE</th>  
+                              <th> SERVERS</th> 
+                              <th> OBSERVATION</th>      
+                            </tr>
+                          </tfoot>
+                         <?php } else { ?>
+                          <div class="alert alert-info"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No changes in progress..!</div> 
+
+
+                          <?php } ?>
+                        </table>
+                       </div>
+
+
+                      </div><!-- /.chat -->
+
+                    </div><!-- /.box (chat box) -->    
+                      </div>
+                  </div>
+              </div>
 
 
             </section><!-- /.Left col -->
@@ -465,18 +561,18 @@ unset($_SESSION['accion_usuario']);
     <script type="text/javascript" src="../Recursos/js/JSGeneral.js"></script>
     <!-- Sparkline -->
     <script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!-- jvectormap -->
+<!--     jvectormap 
     <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>-->
     <!-- jQuery Knob Chart -->
     <script src="plugins/knob/jquery.knob.js"></script>
-    <!-- daterangepicker -->
+<!--     daterangepicker 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+     datepicker 
+    <script src="plugins/datepicker/bootstrap-datepicker.js"></script>-->
     <!-- Bootstrap WYSIHTML5 -->
-    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!--    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>-->
     <!-- Slimscroll -->
     <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
@@ -484,84 +580,24 @@ unset($_SESSION['accion_usuario']);
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard.js"></script>
+<!--    <script src="dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+    <script type="text/javascript" src="../Recursos/assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="../Recursos/assets/js/gritter-conf.js"></script>
     <script>
       $(function () {
         $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
+        $('#example2').DataTable();
       });
     </script>
-    <script>
+    	
+<!--    <script>
       $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
-
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-        //Money Euro
-        $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-              ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
-            },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-        );
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-          checkboxClass: 'icheckbox_minimal-blue',
-          radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-          checkboxClass: 'icheckbox_minimal-red',
-          radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-          checkboxClass: 'icheckbox_flat-green',
-          radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-          showInputs: false
-        });
       });
-    </script>
+    </script>-->
   </body>
 </html>
 

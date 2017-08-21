@@ -16,9 +16,6 @@ if (isset($_POST['hidden_rct'])) {
     $accion = $_POST['hidden_rct'];
     $fecha_ejecucion=null;
      $nombrearchivo = null;
-//    var_dump($accion);
-//    exit();
-
     if ($accion=='registrar'){
             $nombrearchivo = $_FILES['fileArchivo']['name'];
             move_uploaded_file($_FILES['fileArchivo']['tmp_name'], "../Rct/" . $nombrearchivo);
