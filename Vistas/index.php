@@ -312,9 +312,6 @@ unset($_SESSION['accion_usuario']);
                               
                               <li><a href="#news" data-toggle="tab">NEWS</a></li>
                               <li class="active"><a href="#changes" data-toggle="tab">CHANGES</a></li>
-                            
-                            
-                            
                             <li class="pull-left header"><i class="fa fa-inbox"></i> Changes and News</li>
                   </ul>
                   <div class="tab-content no-padding">
@@ -328,7 +325,7 @@ unset($_SESSION['accion_usuario']);
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="background-color:#58D68D;font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;CHANGES IN PROGRESS</strong><br> 
 
                       </div>
-                      <div class="box-body chat" >
+                      <div class="box-body chat">
                        <div class="table-responsive">
                         <table id="example1" class="table table-bordered">
        <?php if ($verdes != null or $amarillos!= null or $rojos!= null ) { ?>
@@ -423,7 +420,7 @@ unset($_SESSION['accion_usuario']);
 
                     </div><!-- /.box (chat box) -->
                       </div>
-                      <div class="chart tab-pane active" id="news" style="position: relative;">
+                      <div class="chart tab-pane" id="news" style="position: relative;">
                       <div class="box box-success">
                       <div class="box-header">
                         <i class="fa fa-tasks"></i>
