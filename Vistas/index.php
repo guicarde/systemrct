@@ -449,8 +449,7 @@ unset($_SESSION['accion_usuario']);
          <?php    
             foreach ($noticias as $n) { 
               ?>
-                            <tr style="font-size:10pt;font-weight: bold; color:white
-                                " class="parpadea" bgcolor="#58D68D">
+                            <tr style="font-size:10pt;font-weight: bold; color:white" bgcolor="#58D68D">
 
                               <td><?php echo $n['rct_ticket']; ?></td>
                               <td><?php echo $n['cliente_nombre']; ?></td>
