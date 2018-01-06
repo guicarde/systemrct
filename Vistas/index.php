@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 if (!isset($_SESSION['username'])) {
     header("location:login.php");
@@ -81,7 +81,7 @@ unset($_SESSION['accion_usuario']);
 <html>
     
   <head>
-     <META HTTP-EQUIV="REFRESH" CONTENT="60;URL=index.php">
+     <META HTTP-EQUIV="REFRESH" CONTENT="59;URL=index.php">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SYSTEM  | RCT</title>
